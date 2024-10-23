@@ -102,7 +102,7 @@
                     <delay>30m</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
+                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/work/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
 sh /tmp/reboot-required_services.sh -s&#13;
 rm /tmp/reboot-required_services.sh</params>
                     <username>{$SSH_USERNAME}</username>
