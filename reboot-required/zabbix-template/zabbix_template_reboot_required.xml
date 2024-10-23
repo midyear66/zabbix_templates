@@ -24,26 +24,6 @@
             </applications>
             <items>
                 <item>
-                    <name>Reboot required (Kernel update)</name>
-                    <key>reboot-required.kernel</key>
-                    <delay>3600</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <request_method>POST</request_method>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^.*$)}=0 and {regexp(^No reboot required.*$)}=0</expression>
-                            <name>Reboot required (Kernel update)</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-                <item>
                     <name>Services needing a restart</name>
                     <key>reboot-required.services</key>
                     <delay>3600</delay>
