@@ -9,58 +9,6 @@
     </groups>
     <templates>
         <template>
-            <template>Linux - Reboot required</template>
-            <name>Reboot required</name>
-            <description>Whether a reboot is required</description>
-            <groups>
-                <group>
-                    <name>Templates</name>
-                </group>
-            </groups>
-            <applications>
-                <application>
-                    <name>Reboot required</name>
-                </application>
-            </applications>
-            <items>
-                <item>
-                    <name>Services needing a restart</name>
-                    <key>reboot-required.services</key>
-                    <delay>3600</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <request_method>POST</request_method>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^.*$)}=0 and {regexp(^No reboot required.*$)}=0</expression>
-                            <name>Some services need to be restarted on {HOST.NAME}</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-            </items>
-            <discovery_rules>
-                <discovery_rule>
-                    <name>Linux Kernel Flavour</name>
-                    <key>linux.pkg.kernel.discover</key>
-                    <delay>30</delay>
-                    <request_method>POST</request_method>
-                </discovery_rule>
-            </discovery_rules>
-            <macros>
-                <macro>
-                    <macro>{$SSH_USERNAME}</macro>
-                    <value>sanford</value>
-                    <description>SSH username</description>
-                </macro>
-            </macros>
-        </template>
-        <template>
             <template>Linux - Reboot required - SSH</template>
             <name>Reboot required (SSH)</name>
             <description>Whether a reboot is required</description>
