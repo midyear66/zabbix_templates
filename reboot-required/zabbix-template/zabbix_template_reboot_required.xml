@@ -96,31 +96,6 @@
             </applications>
             <items>
                 <item>
-                    <name>Kernel update</name>
-                    <type>SSH</type>
-                    <key>ssh.run[reboot-required.sh_kernel,,{$SSH_PORT}]</key>
-                    <delay>30m</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_kernel.sh&#13;
-sh /tmp/reboot-required_kernel.sh -k&#13;
-rm /tmp/reboot-required_kernel.sh</params>
-                    <username>{$SSH_USERNAME}</username>
-                    <password>{$SSH_PASSWORD}</password>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^No reboot required.*$)}&lt;&gt;1</expression>
-                            <name>Reboot required</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-                <item>
                     <name>Services needing a restart</name>
                     <type>SSH</type>
                     <key>ssh.run[reboot-required.sh_services,,{$SSH_PORT}]</key>
