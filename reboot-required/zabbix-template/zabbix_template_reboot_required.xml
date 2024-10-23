@@ -24,7 +24,7 @@
             </applications>
             <items>
                 <item>
-                    <name>Services needing a restart</name>
+                    <name>System needs a restart</name>
                     <type>SSH</type>
                     <key>ssh.run[reboot-required.sh_services,,{$SSH_PORT}]</key>
                     <delay>30m</delay>
@@ -43,7 +43,7 @@ rm /tmp/reboot-required_services.sh</params>
                     <triggers>
                         <trigger>
                             <expression>{regexp(^No reboot required.*$)}&lt;&gt;1 and {regexp(^\s*$)}=0</expression>
-                            <name>Some services need to be restarted</name>
+                            <name>System need to be restarted</name>
                             <priority>INFO</priority>
                         </trigger>
                     </triggers>
