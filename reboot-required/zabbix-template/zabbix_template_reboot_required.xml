@@ -75,7 +75,7 @@
             <macros>
                 <macro>
                     <macro>{$SSH_USERNAME}</macro>
-                    <value>pschmitt</value>
+                    <value>sanford</value>
                     <description>SSH username</description>
                 </macro>
             </macros>
@@ -102,7 +102,7 @@
                     <delay>30m</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/pschmitt/zabbix-reboot-required/master/reboot-required.sh &gt; /tmp/reboot-required_kernel.sh&#13;
+                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_kernel.sh&#13;
 sh /tmp/reboot-required_kernel.sh -k&#13;
 rm /tmp/reboot-required_kernel.sh</params>
                     <username>{$SSH_USERNAME}</username>
@@ -127,7 +127,7 @@ rm /tmp/reboot-required_kernel.sh</params>
                     <delay>30m</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/pschmitt/zabbix-reboot-required/master/reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
+                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
 sh /tmp/reboot-required_services.sh -s&#13;
 rm /tmp/reboot-required_services.sh</params>
                     <username>{$SSH_USERNAME}</username>

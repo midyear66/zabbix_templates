@@ -1,3 +1,7 @@
+Cloned from https://github.com/pschmitt/zabbix-template-reboot-required
+and tweaked for my use.
+Thanks Mr. Schmitt!
+
 # Installation
 
 ## Agent setup
