@@ -9,78 +9,6 @@
     </groups>
     <templates>
         <template>
-            <template>Linux - Reboot required</template>
-            <name>Reboot required</name>
-            <description>Whether a reboot is required</description>
-            <groups>
-                <group>
-                    <name>Templates</name>
-                </group>
-            </groups>
-            <applications>
-                <application>
-                    <name>Reboot required</name>
-                </application>
-            </applications>
-            <items>
-                <item>
-                    <name>Reboot required (Kernel update)</name>
-                    <key>reboot-required.kernel</key>
-                    <delay>3600</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <request_method>POST</request_method>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^.*$)}=0 and {regexp(^No reboot required.*$)}=0</expression>
-                            <name>Reboot required (Kernel update)</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-                <item>
-                    <name>Services needing a restart</name>
-                    <key>reboot-required.services</key>
-                    <delay>3600</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <request_method>POST</request_method>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^.*$)}=0 and {regexp(^No reboot required.*$)}=0</expression>
-                            <name>Some services need to be restarted on {HOST.NAME}</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-            </items>
-            <discovery_rules>
-                <discovery_rule>
-                    <name>Linux Kernel Flavour</name>
-                    <key>linux.pkg.kernel.discover</key>
-                    <delay>30</delay>
-                    <request_method>POST</request_method>
-                </discovery_rule>
-            </discovery_rules>
-            <macros>
-                <macro>
-                    <macro>{$SSH_USERNAME}</macro>
-                    <value>sanford</value>
-                    <description>SSH username</description>
-                </macro>
-            </macros>
-        </template>
-        <template>
             <template>Linux - Reboot required - SSH</template>
             <name>Reboot required (SSH)</name>
             <description>Whether a reboot is required</description>
@@ -96,38 +24,13 @@
             </applications>
             <items>
                 <item>
-                    <name>Kernel update</name>
-                    <type>SSH</type>
-                    <key>ssh.run[reboot-required.sh_kernel,,{$SSH_PORT}]</key>
-                    <delay>30m</delay>
-                    <trends>0</trends>
-                    <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_kernel.sh&#13;
-sh /tmp/reboot-required_kernel.sh -k&#13;
-rm /tmp/reboot-required_kernel.sh</params>
-                    <username>{$SSH_USERNAME}</username>
-                    <password>{$SSH_PASSWORD}</password>
-                    <applications>
-                        <application>
-                            <name>Reboot required</name>
-                        </application>
-                    </applications>
-                    <triggers>
-                        <trigger>
-                            <expression>{regexp(^No reboot required.*$)}&lt;&gt;1</expression>
-                            <name>Reboot required</name>
-                            <priority>INFO</priority>
-                        </trigger>
-                    </triggers>
-                </item>
-                <item>
-                    <name>Services needing a restart</name>
+                    <name>System needs a restart</name>
                     <type>SSH</type>
                     <key>ssh.run[reboot-required.sh_services,,{$SSH_PORT}]</key>
                     <delay>30m</delay>
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
-                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/main/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
+                    <params>curl -qqsL https://raw.githubusercontent.com/midyear66/zabbix_templates/refs/heads/work/reboot-required/zbx-reboot-required.sh &gt; /tmp/reboot-required_services.sh&#13;
 sh /tmp/reboot-required_services.sh -s&#13;
 rm /tmp/reboot-required_services.sh</params>
                     <username>{$SSH_USERNAME}</username>
@@ -140,7 +43,7 @@ rm /tmp/reboot-required_services.sh</params>
                     <triggers>
                         <trigger>
                             <expression>{regexp(^No reboot required.*$)}&lt;&gt;1 and {regexp(^\s*$)}=0</expression>
-                            <name>Some services need to be restarted</name>
+                            <name>System need to be restarted</name>
                             <priority>INFO</priority>
                         </trigger>
                     </triggers>
